@@ -80,7 +80,7 @@ module.exports = env => {
         hostReplacementPaths: nsWebpack.getResolver([platform, "tns"]),
         platformTransformers: ngCompilerTransformers.map(t => t(() => ngCompilerPlugin)),
         mainPath: resolve(appPath, entryModule),
-        tsConfigPath: join(__dirname, "tsconfig.tns.json"),
+        tsConfigPath: join(__dirname, "src", "tsconfig.tns.json"),
         skipCodeGeneration: !aot,
         sourceMap: !!sourceMap,
         additionalLazyModuleResources: additionalLazyModuleResources
@@ -243,7 +243,7 @@ module.exports = env => {
                     to: `${dist}/App_Resources/${appResourcesPlatformDir}`,
                     context: projectRoot
                 },
-            ]),
+            ]),            
             // Copy assets to out dir. Add your own globs as needed.
             new CopyWebpackPlugin([
                 { from: { glob: "fonts/**" } },
@@ -264,6 +264,18 @@ module.exports = env => {
         ],
     };
 
+    // If we're doing a full build (tns run)
+    // and not previewing (tns preview),
+    // copy the native app resources to the out dir.
+    if (env.externals.length === 0) {
+        config.plugins.push(new CopyWebpackPlugin([
+            {
+                from: `${appResourcesFullPath}/${appResourcesPlatformDir}`,
+                to: `${dist}/App_Resources/${appResourcesPlatformDir}`,
+                context: projectRoot
+            },
+        ]));
+    }
 
     if (report) {
         // Generate report files for bundles content

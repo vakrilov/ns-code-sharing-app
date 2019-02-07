@@ -18,19 +18,13 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "~/*": [
+            "@src/*": [
+                "src/*.android.ts",
+                "src/*.ios.ts",
+                "src/*.tns.ts",
+                "src/*.web.ts",
                 "src/*"
-            ],
-            "*": [
-                "./node_modules/tns-core-modules/*",
-                "./node_modules/*"
             ]
         }
-    },
-    "exclude": [
-        "**/*.tns.ts",
-        "**/*.android.ts",
-        "**/*.ios.ts",
-        "**/*.spec.ts"
-    ]
+    }
 }
