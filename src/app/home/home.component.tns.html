@@ -2,5 +2,9 @@
 <ActionBar [title]="title"></ActionBar>
 <StackLayout  class="p-20">
     <Label text="Welcome to {{ title }}!" class="h1 text-center" textWrap="true"></Label>
-    <Label [text]="message" class="h2" textWrap="true"></Label>
+    <Label text="Service" class="h2" textWrap="true"></Label>
+    <Label [text]="message" textWrap="true"></Label>
+
+    <app-mobile-only></app-mobile-only>
+    <app-plat-specific></app-plat-specific>
 </StackLayout>
