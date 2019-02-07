@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '@src/app/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   title = 'shared-project-test';
 
-  constructor() { }
+  message = "";
+
+  constructor(public service: SharedService) { }
 
   ngOnInit() {
+    this.message = this.service.getMessages().join("\n");
   }
 }
