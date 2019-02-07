@@ -14,5 +14,6 @@
     },
     "files": [
       "main.tns.ts",
+      "app/lazy/lazy.module.tns.ts"
     ]
   }

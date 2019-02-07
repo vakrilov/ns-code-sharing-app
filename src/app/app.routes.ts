@@ -12,4 +12,8 @@ export const routes: Routes = [
       path: 'home',
       component: HomeComponent,
   },
+  {
+    path: 'lazy',
+    loadChildren: '@src/app/lazy/lazy.module#LazyModule'
+  },
 ];

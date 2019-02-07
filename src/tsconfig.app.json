@@ -14,5 +14,6 @@
   "files": [
     "main.ts",
     "polyfills.ts",
+    "app/lazy/lazy.module.ts"
   ]
 }
